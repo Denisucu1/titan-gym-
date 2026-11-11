@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+storage/logs/*.log
+storage/rate_limits.json
+storage/database.sqlite
+!storage/logs/.gitkeep
+
+.vscode/
+.idea/

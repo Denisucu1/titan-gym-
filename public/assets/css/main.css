@@ -1,0 +1,193 @@
+/* ==========================================================================
+   TITAN GYM - MAIN CSS (Barem Nota 5.01: Fișier CSS 1)
+   Variabile, layout, navbar, footer, animații @keyframes
+   ========================================================================== */
+
+:root {
+    --primary: #ff4757;
+    --primary-hover: #ee5253;
+    --dark: #0f141d;
+    --dark-surface: #1e2430;
+    --text-light: #f1f2f6;
+    --text-muted: #a4b0be;
+    --success: #2ed573;
+    --warning: #ffa502;
+    --danger: #ff4757;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-radius: 12px;
+    --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.35);
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barem Nota 4.04: Animații CSS */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4); }
+    70% { box-shadow: 0 0 0 14px rgba(255, 71, 87, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+}
+
+.animate-fade-in { animation: fadeIn 0.7s ease-out forwards; }
+.animate-pulse { animation: pulseGlow 2s infinite; }
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    padding: 35px 0;
+}
+
+/* Navbar */
+.site-header {
+    background: rgba(15, 20, 29, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.nav-brand {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.nav-brand span { color: var(--primary); }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Butoane */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+.btn-outline { background: transparent; border: 1px solid var(--border-color); color: #fff; }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+.btn-sm { padding: 6px 14px; font-size: 0.85rem; }
+.btn-danger { background: #e84118; color: #fff; }
+
+/* Footer */
+.site-footer {
+    background: #090c12;
+    border-top: 1px solid var(--border-color);
+    padding: 45px 0 25px 0;
+    color: var(--text-muted);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-col h4 { color: #fff; margin-bottom: 14px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 6px; }
+.footer-col ul li a { color: var(--text-muted); text-decoration: none; }
+.footer-col ul li a:hover { color: var(--primary); }
+.footer-bottom { text-align: center; border-top: 1px solid var(--border-color); padding-top: 18px; font-size: 0.85rem; }
+
+/* Barem Nota 5.02: Responsive Design */
+@media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .mobile-toggle { display: block; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--dark-surface);
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .nav-links.show { display: flex; }
+    .footer-grid { grid-template-columns: 1fr; }
+}

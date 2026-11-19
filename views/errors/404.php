@@ -1,0 +1,8 @@
+<div class="container animate-fade-in" style="max-width: 550px; text-align: center; padding: 50px 15px;">
+    <div class="card" style="padding: 35px;">
+        <div style="font-size: 3.5rem; color: var(--primary); font-weight: 800;">404</div>
+        <h1 style="font-size: 1.6rem; margin: 10px 0;">Pagina nu a fost găsită</h1>
+        <p style="color: var(--text-muted); margin-bottom: 20px;"><?= htmlspecialchars($message ?? 'Resursa solicitată nu există sau a fost mutată.') ?></p>
+        <a href="<?= APP_URL ?>/" class="btn btn-primary">Acasă</a>
+    </div>
+</div>

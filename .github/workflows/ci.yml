@@ -1,0 +1,30 @@
+name: Titan Gym CI
+
+# Barem Nota 6.03: Integrare Continuă / CI/CD cu GitHub Actions
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test:
+    name: Run Unit Tests & Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo, pdo_sqlite, gd, fileinfo
+          coverage: none
+
+      - name: Verify PHP version
+        run: php -v
+
+      - name: Run automated unit tests
+        run: php tests/UnitTest.php

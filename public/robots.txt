@@ -1,0 +1,7 @@
+# Barem Nota 8.01: Optimizare SEO
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /storage/
+
+Sitemap: http://localhost:8000/sitemap.xml

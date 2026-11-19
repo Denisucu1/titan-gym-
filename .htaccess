@@ -1,0 +1,20 @@
+# Barem Nota 10.05: Protejarea resurselor prin .htaccess
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
+</IfModule>
+
+Options -Indexes
+
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.(sql|sqlite|log|env|json|lock|git.*)$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+    <FilesMatch "\.(sql|sqlite|log|env|json|lock|git.*)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
